@@ -92,3 +92,43 @@ In Express, words with a colon in front of them in the url are treated as variab
     git push origin master
 
 # Step 6
+## Add a POST request parser to server.js
+    const bodyParser = require('body-parser');
+    app.use(bodyParser.json());
+
+## write a function to handle a POST requests
+
+    app.post('/login',function(req,res){
+        const username=req.body.username;
+        const password=req.body.password;
+    
+        const mockUsername="billyTheKid";
+        const mockPassword="superSecret";
+    
+        if (username===mockUsername && password===mockPassword){
+            res.json({
+                success: true,
+                message: 'password and username match!',
+                token: 'encrypted token goes here'
+            })
+        } else {
+            res.json({
+                success: false,
+                message: 'password and username do not match'
+            })
+        }
+    })
+
+## push your changes up to GitHub
+
+    git add server.js
+    git commit -m"add login POST route"
+    git push origin master
+
+# Step 7
+
+# Step 8
+
+# Step 9
+
+# Step 10
