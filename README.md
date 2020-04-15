@@ -13,19 +13,20 @@ This is a reference for the NodeJS and Express intro tutorial. You will be pushi
 # Step 1
 
 # Step 2
-## Clone repository
+### Clone repository
     git clone https://github.com/SGuibord/node-express-course.git
     cd node-express-course
 
 Run this from your command line Terminal: npm init -y
 Now you can install Express using NPM. Enter this command in the terminal: npm install express --save
-## push your changes up to GitHub
+
+### push your changes up to GitHub
     git add .
     git commit -m "initial file setup"
     git push origin master
 
 # Step 3
-## server.js
+### server.js
 
     const express = require('express');
     const app = express();
@@ -39,7 +40,7 @@ run the server.js file by entering this in the terminal: node server.js
 
 To end this process, push CTRL+C
 
-## push your changes up to GitHub
+### push your changes up to GitHub
 
     git add server.js
     git commit -m"set up express server"
@@ -48,7 +49,7 @@ To end this process, push CTRL+C
 You can reset the server automatically when you make changes using a tool called nodemon : https://www.npmjs.com/package/nodemon
 
 # Step 4
-## mock JSON data, Add to server.js
+### mock JSON data, Add to server.js
     const mockUserData=[
     {name:'Mark'},
     {name:'Jill'}
@@ -61,7 +62,7 @@ You can reset the server automatically when you make changes using a tool called
         })
     })
 
-## push your changes up to GitHub
+### push your changes up to GitHub
 
     git add server.js
     git commit -m"add first GET route"
@@ -85,18 +86,18 @@ In Express, words with a colon in front of them in the url are treated as variab
         })
     })
 
-## push your changes up to GitHub
+### push your changes up to GitHub
 
     git add server.js
     git commit -m"add dynamic GET route"
     git push origin master
 
 # Step 6
-## Add a POST request parser to server.js
+### Add a POST request parser to server.js
     const bodyParser = require('body-parser');
     app.use(bodyParser.json());
 
-## write a function to handle a POST requests
+### write a function to handle a POST requests
 
     app.post('/login',function(req,res){
         const username=req.body.username;
@@ -119,16 +120,34 @@ In Express, words with a colon in front of them in the url are treated as variab
         }
     })
 
-## push your changes up to GitHub
+NOTE: As a security precaution, you should never save passwords directly into your database. Use a tool like bcrypt to save a hashed version, which will be decoded at login. https://www.npmjs.com/package/bcrypt
+
+### push your changes up to GitHub
 
     git add server.js
     git commit -m"add login POST route"
     git push origin master
 
 # Step 7
+### Use Postman to test POST requests
+Select: POST
 
-# Step 8
+Select: Headers
 
-# Step 9
+    Add Key: Content-Type
+    Add Value: application/json
 
-# Step 10
+Select: Body
+
+Select: raw
+
+Add message to POST:
+
+    {
+        "username":"billyTheKid",
+        "password":"superSecret"
+    }
+
+Select button: Send
+
+Finished!
