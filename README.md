@@ -29,11 +29,11 @@ Now you can install Express using NPM. Enter this command in the terminal: npm i
 
     const express = require('express');
     const app = express();
-    app.listen(8000,function(){
+    app.listen(8099,function(){
         console.log("server is running")
     })
 
-the base url is: http://localhost:8000
+the base url is: http://localhost:8099
 
 run the server.js file by entering this in the terminal: node server.js
 
@@ -67,6 +67,28 @@ You can reset the server automatically when you make changes using a tool called
     git commit -m"add first GET route"
     git push origin master
 
+This function will respond to a GET request at http://localhost:8099/users with a JSON file, which includes our mockData under the key 'users'. Let's test it out!
+    
+    node server.js
+
+You should see a JSON file, served up from your terminal!
+
 # Step 5
+In Express, words with a colon in front of them in the url are treated as variables. You can access the value of each variable through req.params, like this:
+    
+    app.get('/users/:id',function(req,res){
+        console.log(req.params.id)
+        res.json({
+            success: true,
+            message: 'got one user',
+            user: req.params.id
+        })
+    })
+
+## push your changes up to GitHub
+
+    git add server.js
+    git commit -m"add dynamic GET route"
+    git push origin master
 
 # Step 6
